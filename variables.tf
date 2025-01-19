@@ -30,3 +30,17 @@ variable "k8s_version" {
   type        = string
   description = "k8s version"
 }
+
+variable "auto_scale_options" {
+  type = object({
+    min     = number
+    max     = number
+    desired = number
+  })
+  description = "Cluster autoscaling config"
+}
+
+variable "nodes_instance_sizes" {
+  type        = list(string)
+  description = "List of node instance sizes"
+}
