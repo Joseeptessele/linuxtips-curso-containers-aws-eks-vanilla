@@ -25,6 +25,11 @@ resource "aws_eks_cluster" "main" {
     "api", "audit", "authenticator", "controllerManager", "scheduler"
   ]
 
+  # faz com que a aws migre o trafego que esta sendo direcionado para uma AZ com problema para uma AZ que esteja saudavel
+  zonal_shift_config {
+    enabled = true
+  }
+
   tags = {
     "kubernetes.io/cluster/${var.project_name}" = "shared"
   }
